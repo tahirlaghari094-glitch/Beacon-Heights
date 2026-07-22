@@ -3,21 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="3sEKCoLT8UQ2tGs_njHnhB4eF5AIXaofs1fdXFXuMW0" />
     
-    <!-- Title with Alternate Spelling for Search -->
     <title>Beacon Heights Schooling System & Academy | Becon Heights Mirpurkhas</title>
     
-    <!-- SEO Meta Tags for Search Engines (Search keywords fix) -->
     <meta name="description" content="Beacon Heights (Becon Heights) Schooling System & Academy in Mirpurkhas. Session 2026-2027 Admissions Open! First 50 Admissions Free with Free Uniform and 50% Off in Evening Tuition.">
     <meta name="keywords" content="Beacon Heights, Becon Heights, Beacon Heights School Mirpurkhas, Becon Heights Academy, Schooling System Mirpurkhas, Admissions 2026-2027">
     <meta name="author" content="Beacon Heights Schooling System">
 
-    <!-- Favicon (Browser Tab Icon) -->
-    <link rel="icon" type="image/png" href="icon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="icon.png">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Beacon Heights Schooling System & Academy",
+      "alternateName": "Becon Heights Mirpurkhas",
+      "url": "https://beacon-heights-mirpurkhas.netlify.app/",
+      "logo": "https://beacon-heights-mirpurkhas.netlify.app/icon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+92-312-3525881",
+        "contactType": "admissions"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --primary-color: #0b3c5d;
@@ -62,6 +79,7 @@
             border-radius: 4px;
             margin-left: 5px;
             animation: blink 1.5s infinite;
+            cursor: pointer;
         }
 
         @keyframes blink {
@@ -87,7 +105,7 @@
             margin: 0 auto;
         }
 
-        /* Logo Styling with icon.png */
+        /* Logo Styling */
         .logo-container {
             display: flex;
             align-items: center;
@@ -112,56 +130,37 @@
         .logo-text span { color: var(--secondary-color); }
         .logo-text small { display: block; font-size: 0.7rem; color: #666; font-weight: normal; }
 
+        /* Navigation Menu Centered & Bold */
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            justify-content: center;
+            flex-grow: 1;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 0.8rem;
+            gap: 1.5rem;
             align-items: center;
+            justify-content: center;
         }
 
         .nav-links li button {
             background: none;
             border: none;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--dark-text);
             cursor: pointer;
-            padding: 0.4rem;
+            padding: 0.5rem 0.8rem;
             transition: 0.3s;
         }
 
         .nav-links li button:hover, 
         .nav-links li button.active {
             color: var(--secondary-color);
-            border-bottom: 2px solid var(--secondary-color);
-        }
-
-        .nav-btns {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-login {
-            background: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .btn-login:hover {
-            background: var(--secondary-color);
-            color: white;
+            border-bottom: 3px solid var(--secondary-color);
         }
 
         .btn-apply {
@@ -252,7 +251,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
@@ -262,6 +261,9 @@
             border-radius: 8px;
             border-left: 5px solid var(--secondary-color);
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card h3 {
@@ -271,6 +273,72 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* Course Cards Styling */
+        .course-badge {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .course-badge.highsec {
+            background: #ede7f6;
+            color: #512da8;
+        }
+
+        .course-badge.academy {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .course-badge.skill {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .course-list {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .course-list li {
+            padding: 4px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 0.9rem;
+        }
+
+        .course-list li i {
+            color: var(--secondary-color);
+            margin-right: 6px;
+        }
+
+        .fee-box {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .fee-amount {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .fee-original {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.85rem;
+            margin-right: 5px;
         }
 
         /* Form Styling */
@@ -285,6 +353,7 @@
 
         .form-group { margin-bottom: 1rem; }
         .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; font-size: 0.9rem; }
+        .form-group label .req { color: red; }
         .form-group input, 
         .form-group select, 
         .form-group textarea {
@@ -293,6 +362,34 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 0.95rem;
+        }
+
+        .selected-course-display {
+            background: #eef7fc;
+            border: 1px solid #328cc1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: #0b3c5d;
+        }
+
+        .doc-note-box {
+            display: none;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doc-note-box i {
+            font-size: 1.3rem;
+            color: #856404;
         }
 
         .btn-submit {
@@ -351,63 +448,6 @@
             font-weight: bold;
         }
 
-        /* Modal Styling */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 1.8rem;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .tab-btn-container {
-            display: flex;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .modal-tab {
-            flex: 1;
-            padding: 0.6rem;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .modal-tab.active-tab {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-        }
-
-        .modal-form { display: none; }
-        .modal-form.active-form { display: block; }
-
         .map-container {
             margin-top: 1.5rem;
             border-radius: 8px;
@@ -440,9 +480,7 @@
             }
             .nav-menu.mobile-active { display: flex; }
             .nav-links { flex-direction: column; width: 100%; gap: 0; }
-            .nav-links li button { width: 100%; padding: 0.7rem; border-bottom: 1px solid #eee; }
-            .nav-btns { flex-direction: column; width: 100%; margin-top: 1rem; gap: 8px; }
-            .btn-login, .btn-apply { width: 100%; padding: 0.6rem; }
+            .nav-links li button { width: 100%; padding: 0.7rem; border-bottom: 1px solid #eee; font-size: 1.05rem; }
         }
     </style>
 </head>
@@ -450,13 +488,12 @@
 
     <!-- Special Offer Announcement Bar -->
     <div class="offer-bar">
-        🎉 <strong>SPECIAL OFFER (Session 2026-2027):</strong> First 50 Admissions FREE! + Free Uniform + 50% OFF Evening Tuition! <span>Apply Now</span>
+        🎉 <strong>SPECIAL OFFER (Session 2026-2027):</strong> First 50 Admissions FREE! + Free Uniform + 50% OFF Evening Tuition! <span onclick="switchPage('courses')">View Courses & Apply</span>
     </div>
 
     <!-- Header Navigation -->
     <header>
         <div class="navbar">
-            <!-- Logo Section with icon.png image -->
             <div class="logo-container" onclick="switchPage('home')">
                 <img src="icon.png" alt="Beacon Heights Logo" class="logo-img" onerror="this.style.display='none'">
                 <div class="logo-text">
@@ -464,24 +501,19 @@
                     <small>Schooling System & Academy</small>
                 </div>
             </div>
-            
-            <div class="hamburger" onclick="toggleMobileMenu()">
-                <span></span><span></span><span></span>
-            </div>
 
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-links">
                     <li><button id="nav-home" class="active" onclick="switchPage('home')">Home</button></li>
                     <li><button id="nav-about" onclick="switchPage('about')">About Us</button></li>
-                    <li><button id="nav-programmes" onclick="switchPage('programmes')">Programmes</button></li>
+                    <li><button id="nav-courses" onclick="switchPage('courses')">Courses & Fees</button></li>
                     <li><button id="nav-facilities" onclick="switchPage('facilities')">Facilities</button></li>
-                    <li><button id="nav-admissions" onclick="switchPage('admissions')">Admissions 26-27</button></li>
                     <li><button id="nav-contact" onclick="switchPage('contact')">Contact</button></li>
                 </ul>
-                <div class="nav-btns">
-                    <button class="btn-login" onclick="openAuthModal()">Login / Register</button>
-                    <button class="btn-apply" onclick="switchPage('admissions')">Enroll Now</button>
-                </div>
+            </div>
+
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </header>
@@ -491,15 +523,14 @@
         <section class="hero">
             <div class="offer-badge">🔥 Admissions Open 2026 - 2027</div>
             <h1>Beacon Heights Schooling System & Academy</h1>
-            <p>Quality education from Playgroup to Matric/O-Levels & Expert Evening Academy Coaching in Mirpurkhas.</p>
+            <p>Quality education from Primary to Matric & Expert Evening Academy Coaching in Mirpurkhas.</p>
             <div style="margin-top: 15px;">
-                <button class="btn-apply" style="background: var(--gold-color); color: #000; font-size: 1rem; padding: 0.8rem 1.8rem; margin-right: 10px;" onclick="switchPage('admissions')">Avail Free Admission</button>
-                <a href="tel:03123525881" class="btn-login" style="background: #fff; color: var(--primary-color); padding: 0.75rem 1.2rem; text-decoration: none; display: inline-block;">📞 Call: 03123525881</a>
+                <button class="btn-apply" style="background: var(--gold-color); color: #000; font-size: 1rem; padding: 0.8rem 1.8rem; margin-right: 10px;" onclick="switchPage('courses')">View Courses & Enroll</button>
+                <a href="tel:03123525881" style="background: #fff; color: var(--primary-color); padding: 0.75rem 1.2rem; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">📞 Call: 03123525881</a>
             </div>
         </section>
 
         <div class="container">
-            <!-- Special Discount Callout Box -->
             <div class="contact-box">
                 <h2 style="color: var(--accent-color); margin-bottom: 10px;">🎁 Special Limited Time Discount</h2>
                 <p style="font-size: 1.1rem; font-weight: 600;">First 50 Student Admissions are 100% FREE with FREE School Uniform and 50% Flat Discount on Evening Academy Tuition Fee!</p>
@@ -513,7 +544,7 @@
                 </div>
                 <div class="card">
                     <h3><i class="fa-solid fa-book-open"></i> Evening Academy 50% Off</h3>
-                    <p>Special tuition coaching for Matric & FSc students with experienced faculty at 50% discounted fees.</p>
+                    <p>Special tuition coaching for Class 8, Matric & Inter students with experienced faculty at 50% discounted fees.</p>
                 </div>
                 <div class="card">
                     <h3><i class="fa-solid fa-location-dot"></i> Prime Location</h3>
@@ -523,7 +554,241 @@
         </div>
     </div>
 
-    <!-- PAGE 2: ABOUT US -->
+    <!-- PAGE 2: COURSES & FEE STRUCTURE -->
+    <div id="page-courses" class="page">
+        <section class="page-header">
+            <h1>All Classes, Coaching & Professional Courses</h1>
+            <p>Select your desired class or course below to proceed with admission.</p>
+        </section>
+
+        <div class="container">
+            <!-- SECTION 1: MORNING SCHOOLING SYSTEM -->
+            <h2 style="color: var(--primary-color); border-bottom: 3px solid var(--secondary-color); padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-school"></i> Schooling System</h2>
+            <div class="grid" style="margin-bottom: 2rem;">
+                <div class="card">
+                    <span class="course-badge">Pre-Primary</span>
+                    <h3>Playgroup, Nursery & KG</h3>
+                    <p>Activity-based learning, phonics, drawing, and basic numbers in a caring environment.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Age Group: 3 to 5 Years</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Air-Conditioned Classrooms</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Admission Fee: 100% FREE</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 1,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Playgroup, Nursery & KG', 'school')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge">Primary School</span>
+                    <h3>Primary (Class 1 to Class 5)</h3>
+                    <p>Strong base in English, Mathematics, Science, General Knowledge, and Islamic Studies.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Conceptual Learning</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Weekly Assessment Tests</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Free Uniform Offer Included</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 2,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Primary (Class 1 to 5)', 'school')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge">Middle School</span>
+                    <h3>Middle (Class 6, Class 7 & Class 8)</h3>
+                    <p>Comprehensive middle school education covering core science, mathematics, and language concepts.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Science & Computer Practical Base</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Spoken English Focus</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Preparation for Board Foundation</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 2,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Middle (Class 6, 7 & 8)', 'school')">Apply / Enroll</button>
+                </div>
+            </div>
+
+            <!-- SECTION 2: HIGHER SECONDARY SCHOOLING -->
+            <h2 style="color: var(--primary-color); border-bottom: 3px solid #512da8; padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap"></i> Higher Secondary Classes</h2>
+            <div class="grid" style="margin-bottom: 3rem;">
+                <div class="card">
+                    <span class="course-badge highsec">Higher Secondary</span>
+                    <h3>Class 9 (Matric Prep)</h3>
+                    <p>Rigorous academic study for 9th class Science & General groups according to Sindh Board curriculum.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Physics, Chemistry, Biology / Computer & Math</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Specialized Faculty & Lab Practical Sessions</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Monthly Progress Reports</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 3,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Class 9 (Matric Prep)', 'school')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge highsec">Higher Secondary</span>
+                    <h3>Class 10 (Matric Board)</h3>
+                    <p>Complete board exam preparation designed to achieve maximum grade scores in Sindh Board Examinations.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Board Model Papers & Test Series</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Special Practice for Science Numericals</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Practical Exam Training</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 3,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Class 10 (Matric Board)', 'school')">Apply / Enroll</button>
+                </div>
+            </div>
+
+            <!-- SECTION 3: EVENING ACADEMY COACHING -->
+            <h2 style="color: var(--primary-color); border-bottom: 3px solid var(--accent-color); padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-book-open"></i> Evening Academy Coaching (50% OFF)</h2>
+            <div class="grid" style="margin-bottom: 3rem;">
+                <div class="card">
+                    <span class="course-badge academy">Evening Coaching</span>
+                    <h3>Class 8 Coaching</h3>
+                    <p>Special foundation coaching for Class 8 students before entering high school board studies.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Science, Math, English & General Subjects</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Daily Homework Guidance</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Timings: 03:00 PM - 05:00 PM</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Tuition Fee</small>
+                        <div class="fee-amount"><span class="fee-original">PKR 3,000</span> PKR 1,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 8 Coaching', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge academy">Evening Coaching</span>
+                    <h3>Class 9 Coaching (Matric Prep)</h3>
+                    <p>Thorough preparation of 9th Class Science Subjects according to Sindh Board Exam Syllabus.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Physics, Chemistry, Math / Bio, Computer</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Model Papers & Past Papers Revision</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Weekly Test Series</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Tuition Fee</small>
+                        <div class="fee-amount"><span class="fee-original">PKR 4,000</span> PKR 2,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 9 Matric Prep', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge academy">Evening Coaching</span>
+                    <h3>Class 10 Coaching (Matric Board)</h3>
+                    <p>Targeted exam preparation for 10th Class students to achieve A+ Grade in Board Examinations.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Full Board Syllabus Coverage</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Important Board Questions & Guess Papers</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Special Numerical Practice</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Tuition Fee</small>
+                        <div class="fee-amount"><span class="fee-original">PKR 4,000</span> PKR 2,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 10 Matric Board', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge academy">Evening Coaching</span>
+                    <h3>Class 11 Coaching (FSc 1st Year)</h3>
+                    <p>Expert coaching for Pre-Medical, Pre-Engineering & Computer Science (ICS) students.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Advanced Physics, Chemistry, Bio/Math</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Subject Specialist Professors</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Regular Assessment Tests</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Tuition Fee</small>
+                        <div class="fee-amount"><span class="fee-original">PKR 5,000</span> PKR 2,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 11 / FSc 1st Year', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge academy">Evening Coaching</span>
+                    <h3>Class 12 Coaching (FSc 2nd Year)</h3>
+                    <p>High-level guidance for 12th Board Exams and University Medical/Engineering Entry Test base preparation.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Complete Board Revision & Test Sessions</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Entry Test MCQs Preparation</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Past 10 Years Paper Solving</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Tuition Fee</small>
+                        <div class="fee-amount"><span class="fee-original">PKR 5,000</span> PKR 2,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 12 / FSc 2nd Year', 'other')">Apply / Enroll</button>
+                </div>
+            </div>
+
+            <!-- SECTION 4: PROFESSIONAL SKILL COURSES -->
+            <h2 style="color: var(--primary-color); border-bottom: 3px solid #2e7d32; padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-laptop-code"></i> Professional IT & Language Courses</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="course-badge skill">Short IT Course</span>
+                    <h3>CIT (Certificate in Information Technology)</h3>
+                    <p>3 Months basic computer literacy course covering office tools, internet, typing, and OS basics.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Duration: 3 Months</li>
+                        <li><i class="fa-solid fa-check-circle"></i> MS Word, Excel, PowerPoint, Internet</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Practical Computer Lab Practice</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 1,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('CIT - Certificate in IT Course', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge skill">Diploma IT Course</span>
+                    <h3>DIT (Diploma in Information Technology)</h3>
+                    <p>6 Months / 1 Year comprehensive IT Diploma covering web fundamentals, graphics, hardware & networking.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Duration: 6 Months - 1 Year</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Web Design, Graphic Basics, IT Management</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Recognized Course Certificate</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 2,000 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('DIT - Diploma in IT Course', 'other')">Apply / Enroll</button>
+                </div>
+
+                <div class="card">
+                    <span class="course-badge skill">Language Course</span>
+                    <h3>Spoken English & Grammar</h3>
+                    <p>2 Months short course to boost English speaking fluency, vocabulary, and grammar confidence.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Duration: 2 Months</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Conversation Practice & Public Speaking</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Suitable for Students & Working People</li>
+                    </ul>
+                    <div class="fee-box">
+                        <small>Monthly Fee</small>
+                        <div class="fee-amount">PKR 1,500 / Month</div>
+                    </div>
+                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Spoken English & Grammar Course', 'other')">Apply / Enroll</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: ABOUT US -->
     <div id="page-about" class="page">
         <section class="page-header">
             <h1>About Beacon Heights</h1>
@@ -539,31 +804,6 @@
                 <div class="card">
                     <h3>Our Vision</h3>
                     <p>To be the leading schooling and academy network in Mirpurkhas producing top board rankers and future leaders.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAGE 3: PROGRAMMES -->
-    <div id="page-programmes" class="page">
-        <section class="page-header">
-            <h1>Academic & Academy Courses</h1>
-            <p>Session 2026 - 2027 Admissions Open</p>
-        </section>
-
-        <div class="container">
-            <div class="grid">
-                <div class="card">
-                    <h3>Primary Schooling</h3>
-                    <p>Playgroup, Nursery, KG to Grade 5: Activity-based conceptual learning and phonics focus.</p>
-                </div>
-                <div class="card">
-                    <h3>Secondary Schooling</h3>
-                    <p>Grade 6 to Grade 10 (Matric & O-Levels preparation with specialized science labs).</p>
-                </div>
-                <div class="card">
-                    <h3>Evening Academy (50% OFF)</h3>
-                    <p>Coaching classes for 9th, 10th, 11th, 12th (Pre-Medical, Pre-Engineering & ICS) with regular test series.</p>
                 </div>
             </div>
         </div>
@@ -597,34 +837,57 @@
     <!-- PAGE 5: ADMISSIONS -->
     <div id="page-admissions" class="page">
         <section class="page-header">
-            <h1>Admissions Open (2026 - 2027)</h1>
-            <p>Register Now To Avail Free Admission & Uniform Offer!</p>
+            <h1>Admission Application Form (2026 - 2027)</h1>
+            <p>Fill all fields mandatory to complete your application via WhatsApp</p>
         </section>
 
         <div class="container">
             <div class="form-container">
+                <div class="doc-note-box" id="schoolDocNote">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <strong>Important Note:</strong> Please submit your child's <strong>B-Form</strong> and <strong>Previous School Leaving Certificate</strong> at the campus during final verification.
+                    </div>
+                </div>
+
                 <form onsubmit="handleFormSubmit(event)">
-                    <div class="form-group">
-                        <label>Student Full Name</label>
-                        <input type="text" placeholder="Enter student's name" required>
+                    <!-- Selected Course Display -->
+                    <div class="selected-course-display" id="selectedCourseDisplay">
+                        Applying For Course: Not Selected
                     </div>
+
                     <div class="form-group">
-                        <label>Parent / Guardian Phone Number</label>
-                        <input type="tel" placeholder="03123525881" required>
+                        <label>Student Full Name <span class="req">*</span></label>
+                        <input type="text" id="studentName" placeholder="Enter student's name" required>
                     </div>
+
                     <div class="form-group">
-                        <label>Select Admission Type</label>
-                        <select required>
-                            <option value="">Select Option</option>
-                            <option>Schooling System (Playgroup - Grade 10) - FREE OFFER</option>
-                            <option>Evening Academy (Matric / Intermediate) - 50% OFF</option>
-                        </select>
+                        <label>Father's Name <span class="req">*</span></label>
+                        <input type="text" id="fatherName" placeholder="Enter father's name" required>
                     </div>
+
                     <div class="form-group">
-                        <label>Any Query / Address Details</label>
-                        <textarea rows="3" placeholder="Write your query..."></textarea>
+                        <label>Student Age (Years) <span class="req">*</span></label>
+                        <input type="number" id="studentAge" placeholder="e.g. 8" min="3" max="25" required>
                     </div>
-                    <button type="submit" class="btn-submit">Submit Admission Inquiry</button>
+
+                    <div class="form-group">
+                        <label>Previous Class Passed <span class="req">*</span></label>
+                        <input type="text" id="passedClass" placeholder="e.g. Class 4 / New Admission" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Parent / Guardian Phone Number <span class="req">*</span></label>
+                        <input type="tel" id="parentPhone" placeholder="03123525881" required>
+                    </div>
+
+                    <!-- Only Residential Address Required -->
+                    <div class="form-group">
+                        <label>Residential Address <span class="req">*</span></label>
+                        <textarea id="studentAddress" rows="3" placeholder="Enter your complete house address..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit Admission Inquiry via WhatsApp</button>
                 </form>
             </div>
         </div>
@@ -673,45 +936,6 @@
         </div>
     </div>
 
-    <!-- LOGIN / SIGN UP MODAL -->
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
-            <div class="tab-btn-container">
-                <button id="loginTab" class="modal-tab active-tab" onclick="switchAuthTab('login')">Login</button>
-                <button id="signupTab" class="modal-tab" onclick="switchAuthTab('signup')">Sign Up</button>
-            </div>
-
-            <form id="loginForm" class="modal-form active-form" onsubmit="handleAuthSubmit(event, 'Login')">
-                <div class="form-group">
-                    <label>Email or Phone</label>
-                    <input type="text" placeholder="03123525881" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter password" required>
-                </div>
-                <button type="submit" class="btn-submit">Login</button>
-            </form>
-
-            <form id="signupForm" class="modal-form" onsubmit="handleAuthSubmit(event, 'Sign Up')">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="Full Name" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="text" placeholder="03123525881" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Create Password" required>
-                </div>
-                <button type="submit" class="btn-submit">Register</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Floating WhatsApp Contact Button -->
     <a href="https://wa.me/923123525881?text=Hi%2C%20I%20want%20information%20about%20Beacon%20Heights%20Free%20Admission%20Offer." target="_blank" class="whatsapp-btn">
         <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp Us
@@ -725,6 +949,8 @@
 
     <!-- JavaScript For Behavior -->
     <script>
+        let selectedCourse = "";
+
         function toggleMobileMenu() {
             document.getElementById('navMenu').classList.toggle('mobile-active');
         }
@@ -746,50 +972,58 @@
             window.scrollTo(0, 0);
         }
 
+        function applyForCourse(courseName, type) {
+            selectedCourse = courseName;
+            document.getElementById('selectedCourseDisplay').innerText = "Selected Course / Class: " + courseName;
+            
+            const noteBox = document.getElementById('schoolDocNote');
+            if (type === 'school') {
+                noteBox.style.display = 'flex';
+            } else {
+                noteBox.style.display = 'none';
+            }
+
+            switchPage('admissions');
+        }
+
+        // WhatsApp Form Integration
         function handleFormSubmit(event) {
             event.preventDefault();
-            alert("Thank you! Your Admission Inquiry for Session 2026-2027 has been submitted. Our team will contact you shortly.");
-            event.target.reset();
-        }
 
-        function openAuthModal() {
-            document.getElementById('authModal').style.display = 'flex';
-            document.getElementById('navMenu').classList.remove('mobile-active');
-        }
-
-        function closeAuthModal() {
-            document.getElementById('authModal').style.display = 'none';
-        }
-
-        function switchAuthTab(type) {
-            const loginTab = document.getElementById('loginTab');
-            const signupTab = document.getElementById('signupTab');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            if (type === 'login') {
-                loginTab.classList.add('active-tab');
-                signupTab.classList.remove('active-tab');
-                loginForm.classList.add('active-form');
-                signupForm.classList.remove('active-form');
-            } else {
-                signupTab.classList.add('active-tab');
-                loginTab.classList.remove('active-tab');
-                signupForm.classList.add('active-form');
-                loginForm.classList.remove('active-form');
+            // Strict Validation Check
+            if (!selectedCourse) {
+                alert("Please select a Course or Class first from the 'Courses & Fees' page before submitting!");
+                switchPage('courses');
+                return;
             }
-        }
 
-        function handleAuthSubmit(event, action) {
-            event.preventDefault();
-            alert(action + " Successful!");
-            closeAuthModal();
+            const name = document.getElementById('studentName').value.trim();
+            const father = document.getElementById('fatherName').value.trim();
+            const age = document.getElementById('studentAge').value.trim();
+            const passed = document.getElementById('passedClass').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+            const address = document.getElementById('studentAddress').value.trim();
+
+            if (!name || !father || !age || !passed || !phone || !address) {
+                alert("Kripya karke tamam details fill karein. Sabhi fields zaroori hain!");
+                return;
+            }
+
+            const message = `*NEW ADMISSION APPLICATION*%0A` +
+                            `----------------------------%0A` +
+                            `*Selected Course:* ${encodeURIComponent(selectedCourse)}%0A` +
+                            `*Student Name:* ${encodeURIComponent(name)}%0A` +
+                            `*Father Name:* ${encodeURIComponent(father)}%0A` +
+                            `*Student Age:* ${encodeURIComponent(age)} Years%0A` +
+                            `*Previous Class:* ${encodeURIComponent(passed)}%0A` +
+                            `*Parent Phone:* ${encodeURIComponent(phone)}%0A` +
+                            `*Address:* ${encodeURIComponent(address)}`;
+
+            const sirWhatsAppNumber = "923123525881"; 
+            window.open(`https://wa.me/${sirWhatsAppNumber}?text=${message}`, '_blank');
+            
+            alert("Redirecting your application to WhatsApp...");
             event.target.reset();
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('authModal');
-            if (event.target == modal) closeAuthModal();
         }
     </script>
 </body>
