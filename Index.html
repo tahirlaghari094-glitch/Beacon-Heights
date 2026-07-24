@@ -179,6 +179,17 @@
             background: #a93226;
         }
 
+        .btn-admin-nav {
+            background: #2c3e50;
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -241,6 +252,7 @@
             color: #fff;
             text-align: center;
             padding: 35px 20px;
+            position: relative;
         }
 
         .container {
@@ -404,6 +416,57 @@
             font-weight: bold;
         }
 
+        /* Admin Specific Styling */
+        .admin-card {
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .btn-save-admin {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-delete-admin {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-logout-header {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-logout-header:hover {
+            background: #c0392b;
+        }
+
         /* Floating WhatsApp Button */
         .whatsapp-btn {
             position: fixed;
@@ -464,6 +527,79 @@
             font-size: 0.88rem;
         }
 
+        /* OFFICIAL CUSTOM SCREEN POPUP MODAL STYLING */
+        .official-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .official-modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: popIn 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .official-modal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .official-modal-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .official-modal-msg {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .official-modal-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .official-modal-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .official-modal-btn.danger-btn {
+            background: #c0392b;
+            margin-left: 10px;
+        }
+
         @media screen and (max-width: 900px) {
             .hamburger { display: flex; }
             .nav-menu {
@@ -487,8 +623,8 @@
 <body>
 
     <!-- Special Offer Announcement Bar -->
-    <div class="offer-bar">
-        🎉 <strong>SPECIAL OFFER (Session 2026-2027):</strong> First 50 Admissions FREE! + Free Uniform + 50% OFF Evening Tuition! <span onclick="switchPage('courses')">View Courses & Apply</span>
+    <div class="offer-bar" id="display-offer-bar">
+        🎉 <strong id="display-offer-text">SPECIAL OFFER (Session 2026-2027): First 50 Admissions FREE! + Free Uniform + 50% OFF Evening Tuition!</strong> <span onclick="switchPage('courses')">View Courses & Apply</span>
     </div>
 
     <!-- Header Navigation -->
@@ -509,6 +645,7 @@
                     <li><button id="nav-courses" onclick="switchPage('courses')">Courses & Fees</button></li>
                     <li><button id="nav-facilities" onclick="switchPage('facilities')">Facilities</button></li>
                     <li><button id="nav-contact" onclick="switchPage('contact')">Contact</button></li>
+                    <li><button id="nav-admin" class="btn-admin-nav" onclick="switchPage('admin')"><i class="fa-solid fa-lock"></i> Admin</button></li>
                 </ul>
             </div>
 
@@ -526,14 +663,14 @@
             <p>Quality education from Primary to Matric & Expert Evening Academy Coaching in Mirpurkhas.</p>
             <div style="margin-top: 15px;">
                 <button class="btn-apply" style="background: var(--gold-color); color: #000; font-size: 1rem; padding: 0.8rem 1.8rem; margin-right: 10px;" onclick="switchPage('courses')">View Courses & Enroll</button>
-                <a href="tel:03123525881" style="background: #fff; color: var(--primary-color); padding: 0.75rem 1.2rem; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">📞 Call: 03123525881</a>
+                <a href="tel:03123525881" id="display-hero-phone" style="background: #fff; color: var(--primary-color); padding: 0.75rem 1.2rem; text-decoration: none; display: inline-block; border-radius: 5px; font-weight: bold;">📞 Call: 03123525881</a>
             </div>
         </section>
 
         <div class="container">
             <div class="contact-box">
                 <h2 style="color: var(--accent-color); margin-bottom: 10px;">🎁 Special Limited Time Discount</h2>
-                <p style="font-size: 1.1rem; font-weight: 600;">First 50 Student Admissions are 100% FREE with FREE School Uniform and 50% Flat Discount on Evening Academy Tuition Fee!</p>
+                <p style="font-size: 1.1rem; font-weight: 600;" id="display-discount-box">First 50 Student Admissions are 100% FREE with FREE School Uniform and 50% Flat Discount on Evening Academy Tuition Fee!</p>
             </div>
 
             <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 1.5rem;">Why Choose Beacon Heights?</h2>
@@ -564,226 +701,26 @@
         <div class="container">
             <!-- SECTION 1: MORNING SCHOOLING SYSTEM -->
             <h2 style="color: var(--primary-color); border-bottom: 3px solid var(--secondary-color); padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-school"></i> Schooling System</h2>
-            <div class="grid" style="margin-bottom: 2rem;">
-                <div class="card">
-                    <span class="course-badge">Pre-Primary</span>
-                    <h3>Playgroup, Nursery & KG</h3>
-                    <p>Activity-based learning, phonics, drawing, and basic numbers in a caring environment.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Age Group: 3 to 5 Years</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Air-Conditioned Classrooms</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Admission Fee: 100% FREE</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 1,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Playgroup, Nursery & KG', 'school')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge">Primary School</span>
-                    <h3>Primary (Class 1 to Class 5)</h3>
-                    <p>Strong base in English, Mathematics, Science, General Knowledge, and Islamic Studies.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Conceptual Learning</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Weekly Assessment Tests</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Free Uniform Offer Included</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 2,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Primary (Class 1 to 5)', 'school')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge">Middle School</span>
-                    <h3>Middle (Class 6, Class 7 & Class 8)</h3>
-                    <p>Comprehensive middle school education covering core science, mathematics, and language concepts.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Science & Computer Practical Base</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Spoken English Focus</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Preparation for Board Foundation</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 2,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Middle (Class 6, 7 & 8)', 'school')">Apply / Enroll</button>
-                </div>
+            <div class="grid" style="margin-bottom: 2rem;" id="container-schooling">
+                <!-- Dynamic or default items rendered here -->
             </div>
 
             <!-- SECTION 2: HIGHER SECONDARY SCHOOLING -->
             <h2 style="color: var(--primary-color); border-bottom: 3px solid #512da8; padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-graduation-cap"></i> Higher Secondary Classes</h2>
-            <div class="grid" style="margin-bottom: 3rem;">
-                <div class="card">
-                    <span class="course-badge highsec">Higher Secondary</span>
-                    <h3>Class 9 (Matric Prep)</h3>
-                    <p>Rigorous academic study for 9th class Science & General groups according to Sindh Board curriculum.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Physics, Chemistry, Biology / Computer & Math</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Specialized Faculty & Lab Practical Sessions</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Monthly Progress Reports</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 3,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Class 9 (Matric Prep)', 'school')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge highsec">Higher Secondary</span>
-                    <h3>Class 10 (Matric Board)</h3>
-                    <p>Complete board exam preparation designed to achieve maximum grade scores in Sindh Board Examinations.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Board Model Papers & Test Series</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Special Practice for Science Numericals</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Practical Exam Training</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 3,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('School - Class 10 (Matric Board)', 'school')">Apply / Enroll</button>
-                </div>
+            <div class="grid" style="margin-bottom: 3rem;" id="container-highsec">
+                <!-- Dynamic or default items rendered here -->
             </div>
 
             <!-- SECTION 3: EVENING ACADEMY COACHING -->
             <h2 style="color: var(--primary-color); border-bottom: 3px solid var(--accent-color); padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-book-open"></i> Evening Academy Coaching (50% OFF)</h2>
-            <div class="grid" style="margin-bottom: 3rem;">
-                <div class="card">
-                    <span class="course-badge academy">Evening Coaching</span>
-                    <h3>Class 8 Coaching</h3>
-                    <p>Special foundation coaching for Class 8 students before entering high school board studies.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Science, Math, English & General Subjects</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Daily Homework Guidance</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Timings: 03:00 PM - 05:00 PM</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Tuition Fee</small>
-                        <div class="fee-amount"><span class="fee-original">PKR 3,000</span> PKR 1,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 8 Coaching', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge academy">Evening Coaching</span>
-                    <h3>Class 9 Coaching (Matric Prep)</h3>
-                    <p>Thorough preparation of 9th Class Science Subjects according to Sindh Board Exam Syllabus.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Physics, Chemistry, Math / Bio, Computer</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Model Papers & Past Papers Revision</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Weekly Test Series</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Tuition Fee</small>
-                        <div class="fee-amount"><span class="fee-original">PKR 4,000</span> PKR 2,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 9 Matric Prep', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge academy">Evening Coaching</span>
-                    <h3>Class 10 Coaching (Matric Board)</h3>
-                    <p>Targeted exam preparation for 10th Class students to achieve A+ Grade in Board Examinations.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Full Board Syllabus Coverage</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Important Board Questions & Guess Papers</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Special Numerical Practice</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Tuition Fee</small>
-                        <div class="fee-amount"><span class="fee-original">PKR 4,000</span> PKR 2,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 10 Matric Board', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge academy">Evening Coaching</span>
-                    <h3>Class 11 Coaching (FSc 1st Year)</h3>
-                    <p>Expert coaching for Pre-Medical, Pre-Engineering & Computer Science (ICS) students.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Advanced Physics, Chemistry, Bio/Math</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Subject Specialist Professors</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Regular Assessment Tests</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Tuition Fee</small>
-                        <div class="fee-amount"><span class="fee-original">PKR 5,000</span> PKR 2,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 11 / FSc 1st Year', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge academy">Evening Coaching</span>
-                    <h3>Class 12 Coaching (FSc 2nd Year)</h3>
-                    <p>High-level guidance for 12th Board Exams and University Medical/Engineering Entry Test base preparation.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Complete Board Revision & Test Sessions</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Entry Test MCQs Preparation</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Past 10 Years Paper Solving</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Tuition Fee</small>
-                        <div class="fee-amount"><span class="fee-original">PKR 5,000</span> PKR 2,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Evening Academy - Class 12 / FSc 2nd Year', 'other')">Apply / Enroll</button>
-                </div>
+            <div class="grid" style="margin-bottom: 3rem;" id="container-academy">
+                <!-- Dynamic or default items rendered here -->
             </div>
 
             <!-- SECTION 4: PROFESSIONAL SKILL COURSES -->
             <h2 style="color: var(--primary-color); border-bottom: 3px solid #2e7d32; padding-bottom: 8px; margin-bottom: 1.5rem;"><i class="fa-solid fa-laptop-code"></i> Professional IT & Language Courses</h2>
-            <div class="grid">
-                <div class="card">
-                    <span class="course-badge skill">Short IT Course</span>
-                    <h3>CIT (Certificate in Information Technology)</h3>
-                    <p>3 Months basic computer literacy course covering office tools, internet, typing, and OS basics.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Duration: 3 Months</li>
-                        <li><i class="fa-solid fa-check-circle"></i> MS Word, Excel, PowerPoint, Internet</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Practical Computer Lab Practice</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 1,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('CIT - Certificate in IT Course', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge skill">Diploma IT Course</span>
-                    <h3>DIT (Diploma in Information Technology)</h3>
-                    <p>6 Months / 1 Year comprehensive IT Diploma covering web fundamentals, graphics, hardware & networking.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Duration: 6 Months - 1 Year</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Web Design, Graphic Basics, IT Management</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Recognized Course Certificate</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 2,000 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('DIT - Diploma in IT Course', 'other')">Apply / Enroll</button>
-                </div>
-
-                <div class="card">
-                    <span class="course-badge skill">Language Course</span>
-                    <h3>Spoken English & Grammar</h3>
-                    <p>2 Months short course to boost English speaking fluency, vocabulary, and grammar confidence.</p>
-                    <ul class="course-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Duration: 2 Months</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Conversation Practice & Public Speaking</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Suitable for Students & Working People</li>
-                    </ul>
-                    <div class="fee-box">
-                        <small>Monthly Fee</small>
-                        <div class="fee-amount">PKR 1,500 / Month</div>
-                    </div>
-                    <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('Spoken English & Grammar Course', 'other')">Apply / Enroll</button>
-                </div>
+            <div class="grid" id="container-skills">
+                <!-- Dynamic or default items rendered here -->
             </div>
         </div>
     </div>
@@ -817,19 +754,8 @@
         </section>
 
         <div class="container">
-            <div class="grid">
-                <div class="card">
-                    <h3><i class="fa-solid fa-tv"></i> Air-Conditioned & Smart Classes</h3>
-                    <p>Clean, airy, and modern classrooms with audio-visual learning tools.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-shield-halved"></i> CCTV & Safe Campus</h3>
-                    <p>24/7 security surveillance to ensure complete safety for students and staff.</p>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-microscope"></i> Science & Computer Lab</h3>
-                    <p>Fully equipped practical labs for science experiments and computer literacy.</p>
-                </div>
+            <div class="grid" id="container-facilities">
+                <!-- Dynamic Facilities rendered here -->
             </div>
         </div>
     </div>
@@ -903,22 +829,24 @@
         <div class="container">
             <div class="contact-box">
                 <h3 style="color: var(--primary-color); margin-bottom: 10px;">Direct Admission Helpline</h3>
-                <a href="tel:03123525881" class="phone-link">📞 03123525881</a>
-                <a href="tel:03103215175" class="phone-link">📞 03103215175</a>
+                <span id="display-contact-phones">
+                    <a href="tel:03123525881" class="phone-link">📞 03123525881</a>
+                    <a href="tel:03103215175" class="phone-link">📞 03103215175</a>
+                </span>
             </div>
 
             <div class="grid">
                 <div class="card">
                     <h3><i class="fa-solid fa-map-location-dot"></i> Campus Address</h3>
-                    <p><strong>Beacon Heights Schooling System & Academy</strong><br>
+                    <p id="display-campus-address"><strong>Beacon Heights Schooling System & Academy</strong><br>
                     House 01, Near Marhaba Hall,<br>
                     Doctor Rana Rathore Street, Scheme No. 2,<br>
                     Satellite Town, Mirpurkhas, Sindh, Pakistan.</p>
                 </div>
                 <div class="card">
                     <h3><i class="fa-solid fa-clock"></i> Campus Timings</h3>
-                    <p><strong>Morning School:</strong> 07:30 AM - 01:30 PM<br>
-                    <strong>Evening Academy:</strong> 03:00 PM - 08:00 PM</p>
+                    <p><strong>Morning School:</strong> <span id="display-school-time">07:30 AM - 01:30 PM</span><br>
+                    <strong>Evening Academy:</strong> <span id="display-academy-time">03:00 PM - 08:00 PM</span></p>
                 </div>
             </div>
 
@@ -936,6 +864,143 @@
         </div>
     </div>
 
+    <!-- PAGE 7: ADMIN PANEL -->
+    <div id="page-admin" class="page">
+        <section class="page-header" style="background: #2c3e50;">
+            <h1><i class="fa-solid fa-user-shield"></i> Admin Panel Control Center</h1>
+            <p>Edit offer banners, course pricing, timings, address, facilities or add/delete courses</p>
+            
+            <!-- Quick Logout Header Button (Only Visible When Logged In) -->
+            <div id="admin-header-logout" style="display: none;">
+                <button class="btn-logout-header" onclick="logoutAdmin()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout Admin Panel
+                </button>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- LOGIN SECTION -->
+            <div id="admin-login-box" class="admin-card" style="max-width: 450px; margin: 0 auto;">
+                <h3 style="color: #2c3e50; text-align: center; margin-bottom: 15px;"><i class="fa-solid fa-lock"></i> Admin Authentication</h3>
+                <div class="form-group">
+                    <label>Enter Admin Password:</label>
+                    <input type="password" id="adminPasswordInput" placeholder="Type admin password">
+                </div>
+                <button class="btn-save-admin" style="width: 100%; font-size: 1rem;" onclick="loginAdmin()">Login to Dashboard</button>
+            </div>
+
+            <!-- DASHBOARD CONTROLS (HIDDEN BY DEFAULT UNLESS LOGGED IN) -->
+            <div id="admin-dashboard-box" style="display: none;">
+                
+                <!-- 1. GENERAL SITE INFO & ADDRESS EDIT -->
+                <div class="admin-card">
+                    <h3>📢 Edit Banner Offer, Address, Phone & Timings</h3>
+                    <br>
+                    <div class="form-group">
+                        <label>Top Announcement Bar Offer Text:</label>
+                        <input type="text" id="adminOfferInput">
+                    </div>
+                    <div class="form-group">
+                        <label>Campus Address (HTML Allowed, e.g. &lt;br&gt; for new line):</label>
+                        <textarea id="adminAddressInput" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Phone Number (e.g. 03123525881):</label>
+                        <input type="text" id="adminPhoneInput">
+                    </div>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label>Morning School Timings:</label>
+                            <input type="text" id="adminSchoolTimeInput">
+                        </div>
+                        <div class="form-group">
+                            <label>Evening Academy Timings:</label>
+                            <input type="text" id="adminAcademyTimeInput">
+                        </div>
+                    </div>
+                    <button class="btn-save-admin" onclick="saveAdminGeneralInfo()">Save Banner, Address & Info Changes</button>
+                </div>
+
+                <!-- 2. MANAGE FACILITIES SECTION -->
+                <div class="admin-card">
+                    <h3>🏫 Manage Facilities (Add / Edit / Delete)</h3>
+                    <br>
+                    <!-- Add New Facility Form -->
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #ddd;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">➕ Add New Facility</h4>
+                        <div class="grid">
+                            <div class="form-group">
+                                <label>Facility Title:</label>
+                                <input type="text" id="newFacilityTitle" placeholder="e.g. Science Lab">
+                            </div>
+                            <div class="form-group">
+                                <label>FontAwesome Icon Class:</label>
+                                <input type="text" id="newFacilityIcon" placeholder="e.g. fa-solid fa-microscope">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea id="newFacilityDesc" rows="2" placeholder="Facility details..."></textarea>
+                        </div>
+                        <button class="btn-save-admin" onclick="addNewFacility()">Add Facility</button>
+                    </div>
+
+                    <!-- Existing Facilities List -->
+                    <h4 style="color: var(--primary-color); margin-bottom: 10px;">📝 Existing Facilities List</h4>
+                    <div id="admin-facilities-manage-grid" class="grid"></div>
+                </div>
+
+                <!-- 3. ADD NEW COURSE -->
+                <div class="admin-card">
+                    <h3>➕ Add New Course / Class</h3>
+                    <br>
+                    <div class="grid">
+                        <div class="form-group">
+                            <label>Course Title:</label>
+                            <input type="text" id="newCourseTitle" placeholder="e.g. Class 11 Pre-Medical">
+                        </div>
+                        <div class="form-group">
+                            <label>Category Section:</label>
+                            <select id="newCourseCategory">
+                                <option value="schooling">Schooling System</option>
+                                <option value="highsec">Higher Secondary</option>
+                                <option value="academy">Evening Academy</option>
+                                <option value="skills">IT & Skill Courses</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Fee Amount Text:</label>
+                            <input type="text" id="newCourseFee" placeholder="e.g. PKR 2,500 / Month">
+                        </div>
+                        <div class="form-group">
+                            <label>Original Fee (If Discounted):</label>
+                            <input type="text" id="newCourseOriginalFee" placeholder="e.g. PKR 5,000 (Optional)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Course Description:</label>
+                        <textarea id="newCourseDesc" rows="2" placeholder="Short description of the course..."></textarea>
+                    </div>
+                    <button class="btn-save-admin" onclick="addNewCourse()">Add Course to Website</button>
+                </div>
+
+                <!-- 4. MANAGE & EDIT ALL COURSES -->
+                <div class="admin-card">
+                    <h3>📝 Edit or Delete Existing Courses</h3>
+                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Modify prices, titles, or descriptions directly below. Changes update in real-time.</p>
+                    <div id="admin-courses-manage-grid" class="grid"></div>
+                </div>
+
+                <!-- MAIN BOTTOM MANUAL LOGOUT BUTTON -->
+                <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+                    <button class="btn-delete-admin" style="width: auto; padding: 12px 30px; font-weight: bold; background: #c0392b; font-size: 1rem;" onclick="logoutAdmin()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout Admin Panel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating WhatsApp Contact Button -->
     <a href="https://wa.me/923123525881?text=Hi%2C%20I%20want%20information%20about%20Beacon%20Heights%20Free%20Admission%20Offer." target="_blank" class="whatsapp-btn">
         <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp Us
@@ -944,13 +1009,235 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Beacon Heights (Becon Heights) Schooling System & Academy.</p>
-        <p style="font-size: 0.8rem; margin-top: 5px;">House 01, Doctor Rana Rathore Street, Scheme 2, Satellite Town, Mirpurkhas | Call: 03123525881</p>
+        <p style="font-size: 0.8rem; margin-top: 5px;" id="display-footer-address">House 01, Doctor Rana Rathore Street, Scheme 2, Satellite Town, Mirpurkhas | Call: <span id="display-footer-phone">03123525881</span></p>
     </footer>
 
-    <!-- JavaScript For Behavior -->
+    <!-- OFFICIAL SCREEN POPUP MODAL HTML STRUCTURE -->
+    <div id="officialModalOverlay" class="official-modal-overlay">
+        <div class="official-modal-box">
+            <div id="modalIcon" class="official-modal-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div id="modalTitle" class="official-modal-title">Notification</div>
+            <div id="modalMsg" class="official-modal-msg">Message text goes here...</div>
+            <div id="modalActions">
+                <button class="official-modal-btn" onclick="closeOfficialModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript For Behavior & Admin System -->
     <script>
         let selectedCourse = "";
+        let confirmCallback = null;
 
+        // Custom Official Screen Notification Dialog System
+        function showOfficialAlert(message, title = "System Notification", iconClass = "fa-solid fa-circle-info") {
+            document.getElementById('modalIcon').innerHTML = `<i class="${iconClass}"></i>`;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMsg').innerText = message;
+            document.getElementById('modalActions').innerHTML = `<button class="official-modal-btn" onclick="closeOfficialModal()">OK</button>`;
+            document.getElementById('officialModalOverlay').style.display = 'flex';
+        }
+
+        function showOfficialConfirm(message, title = "Confirmation Required", onConfirm) {
+            confirmCallback = onConfirm;
+            document.getElementById('modalIcon').innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c;"></i>`;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMsg').innerText = message;
+            document.getElementById('modalActions').innerHTML = `
+                <button class="official-modal-btn" onclick="closeOfficialModal()">Cancel</button>
+                <button class="official-modal-btn danger-btn" onclick="executeConfirm()">Confirm Delete</button>
+            `;
+            document.getElementById('officialModalOverlay').style.display = 'flex';
+        }
+
+        function closeOfficialModal() {
+            document.getElementById('officialModalOverlay').style.display = 'none';
+        }
+
+        function executeConfirm() {
+            closeOfficialModal();
+            if (confirmCallback) confirmCallback();
+        }
+
+        // Default Initial Data
+        const defaultData = {
+            offerText: "SPECIAL OFFER (Session 2026-2027): First 50 Admissions FREE! + Free Uniform + 50% OFF Evening Tuition!",
+            address: "<strong>Beacon Heights Schooling System & Academy</strong><br>House 01, Near Marhaba Hall,<br>Doctor Rana Rathore Street, Scheme No. 2,<br>Satellite Town, Mirpurkhas, Sindh, Pakistan.",
+            phone: "03123525881",
+            schoolTime: "07:30 AM - 01:30 PM",
+            academyTime: "03:00 PM - 08:00 PM",
+            facilities: [
+                { id: 1, icon: "fa-solid fa-tv", title: "Air-Conditioned & Smart Classes", desc: "Clean, airy, and modern classrooms with audio-visual learning tools." },
+                { id: 2, icon: "fa-solid fa-shield-halved", title: "CCTV & Safe Campus", desc: "24/7 security surveillance to ensure complete safety for students and staff." },
+                { id: 3, icon: "fa-solid fa-microscope", title: "Science & Computer Lab", desc: "Fully equipped practical labs for science experiments and computer literacy." }
+            ],
+            courses: [
+                // Schooling
+                { id: 101, cat: "schooling", badge: "Pre-Primary", title: "Playgroup, Nursery & KG", desc: "Activity-based learning, phonics, drawing, and basic numbers in a caring environment.", fee: "PKR 1,500 / Month", origFee: "", bullets: ["Age Group: 3 to 5 Years", "Air-Conditioned Classrooms", "Admission Fee: 100% FREE"], type: "school" },
+                { id: 102, cat: "schooling", badge: "Primary School", title: "Primary (Class 1 to Class 5)", desc: "Strong base in English, Mathematics, Science, General Knowledge, and Islamic Studies.", fee: "PKR 2,000 / Month", origFee: "", bullets: ["Conceptual Learning", "Weekly Assessment Tests", "Free Uniform Offer Included"], type: "school" },
+                { id: 103, cat: "schooling", badge: "Middle School", title: "Middle (Class 6, Class 7 & Class 8)", desc: "Comprehensive middle school education covering core science, mathematics, and language concepts.", fee: "PKR 2,500 / Month", origFee: "", bullets: ["Science & Computer Practical Base", "Spoken English Focus", "Preparation for Board Foundation"], type: "school" },
+
+                // Higher Secondary
+                { id: 201, cat: "highsec", badge: "Higher Secondary", title: "Class 9 (Matric Prep)", desc: "Rigorous academic study for 9th class Science & General groups according to Sindh Board curriculum.", fee: "PKR 3,000 / Month", origFee: "", bullets: ["Physics, Chemistry, Biology / Computer & Math", "Specialized Faculty & Lab Practical Sessions", "Monthly Progress Reports"], type: "school" },
+                { id: 202, cat: "highsec", badge: "Higher Secondary", title: "Class 10 (Matric Board)", desc: "Complete board exam preparation designed to achieve maximum grade scores in Sindh Board Examinations.", fee: "PKR 3,000 / Month", origFee: "", bullets: ["Board Model Papers & Test Series", "Special Practice for Science Numericals", "Practical Exam Training"], type: "school" },
+
+                // Evening Academy
+                { id: 301, cat: "academy", badge: "Evening Coaching", title: "Class 8 Coaching", desc: "Special foundation coaching for Class 8 students before entering high school board studies.", fee: "PKR 1,500 / Month", origFee: "PKR 3,000", bullets: ["Science, Math, English & General Subjects", "Daily Homework Guidance", "Timings: 03:00 PM - 05:00 PM"], type: "other" },
+                { id: 302, cat: "academy", badge: "Evening Coaching", title: "Class 9 Coaching (Matric Prep)", desc: "Thorough preparation of 9th Class Science Subjects according to Sindh Board Exam Syllabus.", fee: "PKR 2,000 / Month", origFee: "PKR 4,000", bullets: ["Physics, Chemistry, Math / Bio, Computer", "Model Papers & Past Papers Revision", "Weekly Test Series"], type: "other" },
+                { id: 303, cat: "academy", badge: "Evening Coaching", title: "Class 10 Coaching (Matric Board)", desc: "Targeted exam preparation for 10th Class students to achieve A+ Grade in Board Examinations.", fee: "PKR 2,000 / Month", origFee: "PKR 4,000", bullets: ["Full Board Syllabus Coverage", "Important Board Questions & Guess Papers", "Special Numerical Practice"], type: "other" },
+                { id: 304, cat: "academy", badge: "Evening Coaching", title: "Class 11 Coaching (FSc 1st Year)", desc: "Expert coaching for Pre-Medical, Pre-Engineering & Computer Science (ICS) students.", fee: "PKR 2,500 / Month", origFee: "PKR 5,000", bullets: ["Advanced Physics, Chemistry, Bio/Math", "Subject Specialist Professors", "Regular Assessment Tests"], type: "other" },
+                { id: 305, cat: "academy", badge: "Evening Coaching", title: "Class 12 Coaching (FSc 2nd Year)", desc: "High-level guidance for 12th Board Exams and University Medical/Engineering Entry Test base preparation.", fee: "PKR 2,500 / Month", origFee: "PKR 5,000", bullets: ["Complete Board Revision & Test Sessions", "Entry Test MCQs Preparation", "Past 10 Years Paper Solving"], type: "other" },
+
+                // Professional Skills
+                { id: 401, cat: "skills", badge: "Short IT Course", title: "CIT (Certificate in Information Technology)", desc: "3 Months basic computer literacy course covering office tools, internet, typing, and OS basics.", fee: "PKR 1,500 / Month", origFee: "", bullets: ["Duration: 3 Months", "MS Word, Excel, PowerPoint, Internet", "Practical Computer Lab Practice"], type: "other" },
+                { id: 402, cat: "skills", badge: "Diploma IT Course", title: "DIT (Diploma in Information Technology)", desc: "6 Months / 1 Year comprehensive IT Diploma covering web fundamentals, graphics, hardware & networking.", fee: "PKR 2,000 / Month", origFee: "", bullets: ["Duration: 6 Months - 1 Year", "Web Design, Graphic Basics, IT Management", "Recognized Course Certificate"], type: "other" },
+                { id: 403, cat: "skills", badge: "Language Course", title: "Spoken English & Grammar", desc: "2 Months short course to boost English speaking fluency, vocabulary, and grammar confidence.", fee: "PKR 1,500 / Month", origFee: "", bullets: ["Duration: 2 Months", "Conversation Practice & Public Speaking", "Suitable for Students & Working People"], type: "other" }
+            ]
+        };
+
+        // Data Management via LocalStorage
+        function getSiteData() {
+            const data = localStorage.getItem('beacon_heights_full_data');
+            return data ? JSON.parse(data) : defaultData;
+        }
+
+        function saveSiteData(data) {
+            localStorage.setItem('beacon_heights_full_data', JSON.stringify(data));
+            renderSite();
+        }
+
+        // Render Public View & Admin Inputs
+        function renderSite() {
+            const data = getSiteData();
+
+            // Check Admin Persistent Login State (NO AUTO LOGOUT)
+            const isLog = localStorage.getItem('bh_admin_logged_in') === 'true';
+            if (isLog) {
+                document.getElementById('admin-login-box').style.display = 'none';
+                document.getElementById('admin-dashboard-box').style.display = 'block';
+                document.getElementById('admin-header-logout').style.display = 'block';
+            } else {
+                document.getElementById('admin-login-box').style.display = 'block';
+                document.getElementById('admin-dashboard-box').style.display = 'none';
+                document.getElementById('admin-header-logout').style.display = 'none';
+            }
+
+            // Render Dynamic Info
+            document.getElementById('display-offer-text').innerText = data.offerText;
+            document.getElementById('display-campus-address').innerHTML = data.address || defaultData.address;
+            document.getElementById('display-hero-phone').href = "tel:" + data.phone;
+            document.getElementById('display-hero-phone').innerText = "📞 Call: " + data.phone;
+            document.getElementById('display-footer-phone').innerText = data.phone;
+            document.getElementById('display-school-time').innerText = data.schoolTime;
+            document.getElementById('display-academy-time').innerText = data.academyTime;
+
+            // Render Facilities
+            const facilitiesGrid = document.getElementById('container-facilities');
+            facilitiesGrid.innerHTML = '';
+            (data.facilities || defaultData.facilities).forEach(f => {
+                facilitiesGrid.innerHTML += `
+                    <div class="card">
+                        <h3><i class="${f.icon}"></i> ${f.title}</h3>
+                        <p>${f.desc}</p>
+                    </div>
+                `;
+            });
+
+            // Clear Grid Containers
+            const schoolingGrid = document.getElementById('container-schooling');
+            const highsecGrid = document.getElementById('container-highsec');
+            const academyGrid = document.getElementById('container-academy');
+            const skillsGrid = document.getElementById('container-skills');
+
+            schoolingGrid.innerHTML = '';
+            highsecGrid.innerHTML = '';
+            academyGrid.innerHTML = '';
+            skillsGrid.innerHTML = '';
+
+            // Render Courses
+            data.courses.forEach(c => {
+                const bulletList = c.bullets && c.bullets.length ? `<ul class="course-list">${c.bullets.map(b => `<li><i class="fa-solid fa-check-circle"></i> ${b}</li>`).join('')}</ul>` : '';
+                const origPriceHTML = c.origFee ? `<span class="fee-original">${c.origFee}</span> ` : '';
+                
+                const cardHTML = `
+                    <div class="card">
+                        <span class="course-badge ${c.cat === 'highsec' ? 'highsec' : c.cat === 'academy' ? 'academy' : c.cat === 'skills' ? 'skill' : ''}">${c.badge}</span>
+                        <h3>${c.title}</h3>
+                        <p>${c.desc}</p>
+                        ${bulletList}
+                        <div class="fee-box">
+                            <small>Monthly Fee</small>
+                            <div class="fee-amount">${origPriceHTML}${c.fee}</div>
+                        </div>
+                        <button class="btn-apply" style="width: 100%; margin-top: 15px;" onclick="applyForCourse('${c.title.replace(/'/g, "\\'")}', '${c.type}')">Apply / Enroll</button>
+                    </div>
+                `;
+
+                if (c.cat === 'schooling') schoolingGrid.innerHTML += cardHTML;
+                else if (c.cat === 'highsec') highsecGrid.innerHTML += cardHTML;
+                else if (c.cat === 'academy') academyGrid.innerHTML += cardHTML;
+                else if (c.cat === 'skills') skillsGrid.innerHTML += cardHTML;
+            });
+
+            // Populate Admin Inputs
+            document.getElementById('adminOfferInput').value = data.offerText;
+            document.getElementById('adminAddressInput').value = data.address || defaultData.address;
+            document.getElementById('adminPhoneInput').value = data.phone;
+            document.getElementById('adminSchoolTimeInput').value = data.schoolTime;
+            document.getElementById('adminAcademyTimeInput').value = data.academyTime;
+
+            // Render Admin Facilities Management Grid
+            const adminFacilitiesGrid = document.getElementById('admin-facilities-manage-grid');
+            adminFacilitiesGrid.innerHTML = '';
+            (data.facilities || defaultData.facilities).forEach(f => {
+                adminFacilitiesGrid.innerHTML += `
+                    <div class="card" style="border-left-color: #27ae60;">
+                        <div class="form-group">
+                            <label>Facility Title:</label>
+                            <input type="text" value="${f.title}" onchange="updateFacilityItem(${f.id}, 'title', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Class (FontAwesome):</label>
+                            <input type="text" value="${f.icon}" onchange="updateFacilityItem(${f.id}, 'icon', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea rows="2" onchange="updateFacilityItem(${f.id}, 'desc', this.value)">${f.desc}</textarea>
+                        </div>
+                        <button class="btn-delete-admin" onclick="deleteFacilityItem(${f.id})">Delete Facility</button>
+                    </div>
+                `;
+            });
+
+            // Render Admin Courses Management Cards
+            const adminGrid = document.getElementById('admin-courses-manage-grid');
+            adminGrid.innerHTML = '';
+            data.courses.forEach(c => {
+                adminGrid.innerHTML += `
+                    <div class="card" style="border-left-color: #2c3e50;">
+                        <div class="form-group">
+                            <label>Course Title:</label>
+                            <input type="text" value="${c.title}" onchange="updateCourseItem(${c.id}, 'title', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Fee:</label>
+                            <input type="text" value="${c.fee}" onchange="updateCourseItem(${c.id}, 'fee', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Original Fee (Crossed):</label>
+                            <input type="text" value="${c.origFee || ''}" onchange="updateCourseItem(${c.id}, 'origFee', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea rows="2" onchange="updateCourseItem(${c.id}, 'desc', this.value)">${c.desc}</textarea>
+                        </div>
+                        <button class="btn-delete-admin" onclick="deleteCourseItem(${c.id})">Delete Course</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Navigation Logic
         function toggleMobileMenu() {
             document.getElementById('navMenu').classList.toggle('mobile-active');
         }
@@ -990,9 +1277,8 @@
         function handleFormSubmit(event) {
             event.preventDefault();
 
-            // Strict Validation Check
             if (!selectedCourse) {
-                alert("Please select a Course or Class first from the 'Courses & Fees' page before submitting!");
+                showOfficialAlert("Please select a Course or Class first from the 'Courses & Fees' page before submitting!", "Action Required", "fa-solid fa-triangle-exclamation");
                 switchPage('courses');
                 return;
             }
@@ -1005,7 +1291,7 @@
             const address = document.getElementById('studentAddress').value.trim();
 
             if (!name || !father || !age || !passed || !phone || !address) {
-                alert("Kripya karke tamam details fill karein. Sabhi fields zaroori hain!");
+                showOfficialAlert("Kripya karke tamam details fill karein. Sabhi fields zaroori hain!", "Incomplete Form", "fa-solid fa-triangle-exclamation");
                 return;
             }
 
@@ -1019,12 +1305,156 @@
                             `*Parent Phone:* ${encodeURIComponent(phone)}%0A` +
                             `*Address:* ${encodeURIComponent(address)}`;
 
-            const sirWhatsAppNumber = "923123525881"; 
+            const currentData = getSiteData();
+            const sirWhatsAppNumber = "92" + currentData.phone.replace(/[^0-9]/g, ''); 
             window.open(`https://wa.me/${sirWhatsAppNumber}?text=${message}`, '_blank');
             
-            alert("Redirecting your application to WhatsApp...");
+            showOfficialAlert("Redirecting your application to WhatsApp...", "Success", "fa-solid fa-circle-check");
             event.target.reset();
         }
+
+        // Admin Panel Functions
+        function loginAdmin() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if (pass === "M.Tahir123") {
+                // Save login state in LocalStorage (NO Auto-Logout)
+                localStorage.setItem('bh_admin_logged_in', 'true');
+                renderSite();
+                showOfficialAlert("Admin Login Successful! Welcome to Dashboard.", "Welcome", "fa-solid fa-circle-check");
+            } else {
+                showOfficialAlert("Ghalat Admin Password! Please enter the correct password.", "Access Denied", "fa-solid fa-lock");
+            }
+        }
+
+        // MANUAL LOGOUT ONLY FUNCTION
+        function logoutAdmin() {
+            localStorage.removeItem('bh_admin_logged_in');
+            document.getElementById('adminPasswordInput').value = '';
+            renderSite();
+            switchPage('home');
+            showOfficialAlert("You have logged out from Admin Panel.", "Logged Out", "fa-solid fa-circle-info");
+        }
+
+        function saveAdminGeneralInfo() {
+            const data = getSiteData();
+            data.offerText = document.getElementById('adminOfferInput').value;
+            data.address = document.getElementById('adminAddressInput').value;
+            data.phone = document.getElementById('adminPhoneInput').value;
+            data.schoolTime = document.getElementById('adminSchoolTimeInput').value;
+            data.academyTime = document.getElementById('adminAcademyTimeInput').value;
+
+            saveSiteData(data);
+            showOfficialAlert("Banner Offers, Address, Timing & Phone info successfully saved!", "Saved Successfully", "fa-solid fa-floppy-disk");
+        }
+
+        // Facility Management Functions
+        function addNewFacility() {
+            const title = document.getElementById('newFacilityTitle').value.trim();
+            const icon = document.getElementById('newFacilityIcon').value.trim() || "fa-solid fa-check-circle";
+            const desc = document.getElementById('newFacilityDesc').value.trim();
+
+            if (!title) {
+                showOfficialAlert("Please enter Facility Title!", "Input Error", "fa-solid fa-triangle-exclamation");
+                return;
+            }
+
+            const data = getSiteData();
+            if (!data.facilities) data.facilities = [...defaultData.facilities];
+
+            data.facilities.push({
+                id: Date.now(),
+                icon: icon,
+                title: title,
+                desc: desc || "Modern campus facility."
+            });
+
+            saveSiteData(data);
+
+            document.getElementById('newFacilityTitle').value = '';
+            document.getElementById('newFacilityIcon').value = '';
+            document.getElementById('newFacilityDesc').value = '';
+
+            showOfficialAlert("New facility added successfully!", "Facility Added", "fa-solid fa-circle-check");
+        }
+
+        function updateFacilityItem(id, key, value) {
+            const data = getSiteData();
+            if (!data.facilities) data.facilities = [...defaultData.facilities];
+            const facility = data.facilities.find(f => f.id === id);
+            if (facility) {
+                facility[key] = value;
+                saveSiteData(data);
+            }
+        }
+
+        function deleteFacilityItem(id) {
+            showOfficialConfirm("Kya aap is facility ko delete karna chahte hain?", "Delete Confirmation", function() {
+                const data = getSiteData();
+                if (!data.facilities) data.facilities = [...defaultData.facilities];
+                data.facilities = data.facilities.filter(f => f.id !== id);
+                saveSiteData(data);
+                showOfficialAlert("Facility deleted successfully!", "Deleted", "fa-solid fa-trash-can");
+            });
+        }
+
+        function addNewCourse() {
+            const title = document.getElementById('newCourseTitle').value.trim();
+            const cat = document.getElementById('newCourseCategory').value;
+            const fee = document.getElementById('newCourseFee').value.trim();
+            const origFee = document.getElementById('newCourseOriginalFee').value.trim();
+            const desc = document.getElementById('newCourseDesc').value.trim();
+
+            if (!title || !fee) {
+                showOfficialAlert("Please enter both Title and Fee!", "Input Error", "fa-solid fa-triangle-exclamation");
+                return;
+            }
+
+            const data = getSiteData();
+            const badgeMap = { schooling: "School Class", highsec: "Higher Sec", academy: "Evening Coaching", skills: "Skill Course" };
+            
+            data.courses.push({
+                id: Date.now(),
+                cat: cat,
+                badge: badgeMap[cat] || "Course",
+                title: title,
+                desc: desc || "Comprehensive study program.",
+                fee: fee,
+                origFee: origFee,
+                bullets: ["Qualified Faculty", "Regular Tests"],
+                type: (cat === 'schooling' || cat === 'highsec') ? 'school' : 'other'
+            });
+
+            saveSiteData(data);
+
+            // Reset inputs
+            document.getElementById('newCourseTitle').value = '';
+            document.getElementById('newCourseFee').value = '';
+            document.getElementById('newCourseOriginalFee').value = '';
+            document.getElementById('newCourseDesc').value = '';
+
+            showOfficialAlert("New course added successfully!", "Course Added", "fa-solid fa-circle-check");
+        }
+
+        function updateCourseItem(id, key, value) {
+            const data = getSiteData();
+            const course = data.courses.find(c => c.id === id);
+            if (course) {
+                course[key] = value;
+                saveSiteData(data);
+            }
+        }
+
+        function deleteCourseItem(id) {
+            showOfficialConfirm("Kya aap is course ko delete karna chahte hain?", "Delete Confirmation", function() {
+                const data = getSiteData();
+                data.courses = data.courses.filter(c => c.id !== id);
+                saveSiteData(data);
+                showOfficialAlert("Course deleted successfully!", "Deleted", "fa-solid fa-trash-can");
+            });
+        }
+
+        // Initialize on load
+        window.onload = renderSite;
     </script>
 </body>
 </html>
